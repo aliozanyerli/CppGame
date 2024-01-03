@@ -1,4 +1,10 @@
 ﻿  Graphics.cpp
+C:\dev\CppGame\Game\Game\Engine\source\Graphics.cpp(77,65): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\dev\CppGame\Game\Game\Engine\source\Graphics.cpp(77,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\dev\CppGame\Game\Game\Engine\source\Graphics.cpp(78,65): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\dev\CppGame\Game\Game\Engine\source\Graphics.cpp(78,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\dev\CppGame\Game\Game\Engine\source\Graphics.cpp(79,65): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\dev\CppGame\Game\Game\Engine\source\Graphics.cpp(79,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   main.cpp
   Generating Code...
   Game.vcxproj -> C:\dev\CppGame\Game\Debug\Game.exe
