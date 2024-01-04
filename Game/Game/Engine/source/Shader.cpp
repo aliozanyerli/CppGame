@@ -1,6 +1,30 @@
 #include "Shader.h"
 
 
+static ShaderSource ParseShader(const string & filePath){
+	ifstream stream(filePath);
+	string line;
+	stringstream ss[2];
+	enum ShaderType{
+		NONE = 0, VERTEX = 0, FRAGMENT = 1
+	};
+	ShaderType type = ShaderType::NONE;
+	while(getline(stream, line)){
+		if(line.find("#shader") != string::npos){
+			if(line.find("vertex") != string::npos){
+				type = ShaderType::VERTEX;
+			}
+			else if(line.find("fragment") != string::npos){
+				type = ShaderType::FRAGMENT;
+			}
+		}
+		else{
+			ss[(int)type] << line << '\n';
+		}
+	}
+	return {ss[0].str(), ss[1].str()};
+}
+
 static unsigned int CompileShader(unsigned int type, const string& source){
 	unsigned int id = glCreateShader(type);
 	const char* src = source.c_str();
@@ -39,9 +63,19 @@ static unsigned int CreateShader(const string & vertexShader, const string & fra
 }
 
 
+Shader::Shader(const string& filePath){
+	ShaderSource source = ParseShader(filePath);
+	//cout << "VERTEX:\n" << source.vertexSource << "\n\n\nFRAGMENT:\n" << source.fragmentSource << "\n\n\n";
+	shader = CreateShader(source.vertexSource, source.fragmentSource);
+	Bind();
+}
 Shader::Shader(const string& vertexShader, const string& fragmentShader){
 	shader = CreateShader(vertexShader, fragmentShader);
 	Bind();
+}
+Shader::~Shader(){
+	glDeleteProgram(shader);
+	cout << "Deleted shader!\n";
 }
 void Shader::Bind(){
 	glUseProgram(shader);

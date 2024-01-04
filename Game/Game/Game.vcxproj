@@ -153,6 +153,9 @@
     <ClInclude Include="Engine\source\pch.h" />
     <ClInclude Include="Engine\source\Shader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Shaders\Basic.shader" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
