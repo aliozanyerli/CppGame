@@ -5,12 +5,15 @@
 #include <GLFW/glfw3.h>
 
 //c++ libraries
+#include <iostream>
 #include <string>
 #include <vector>
 
 #include "MyMath.h"
+#include "MyTime.h"
 
 using namespace std;
+
 
 
 namespace Graphics{

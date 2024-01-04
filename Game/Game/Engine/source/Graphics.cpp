@@ -1,14 +1,6 @@
 #include "Graphics.h"
 
 
-//c++ libraries
-#include <iostream>
-
-//my libraries
-#include "MyMath.h"
-
-
-
 namespace Graphics{
 	/// Window
 	Window::Window(int sizeX, int sizeY, const char title[]){
@@ -42,6 +34,8 @@ namespace Graphics{
         return glfwWindowShouldClose(window);
     }
     void Window::Update(void(*func)()){
+        Time.calculateDelta();
+        Time.updateTime();
         glClear(GL_COLOR_BUFFER_BIT);
         func();
         glfwSwapBuffers(window);

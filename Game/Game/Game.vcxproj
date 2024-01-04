@@ -141,6 +141,8 @@
   <ItemGroup>
     <ClCompile Include="Engine\source\Graphics.cpp" />
     <ClCompile Include="Engine\source\MyMath.cpp" />
+    <ClCompile Include="Engine\source\MyTime.cpp" />
+    <ClCompile Include="Engine\source\MyTime.h" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
