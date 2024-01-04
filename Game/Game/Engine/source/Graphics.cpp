@@ -43,35 +43,41 @@ namespace Graphics{
     }
 
 
-
+    
     /// Triangle
     Triangle::Triangle(){
-        verticies[0] = Vector2(-0.5,-0.5);
+        /// Setting up data
+        {verticies[0] = Vector2(-0.5,-0.5);
         verticies[1] = Vector2(0,0.5);
         verticies[2] = Vector2(0.5,-0.5);
         position = Vector2(0, 0);
-        scale = Vector2(1, 1);
-    }
-    Triangle::Triangle(Vector2 verticies[3],Vector2 position,Vector2 scale){
-        this->verticies[0] = verticies[0];
-        this->verticies[1] = verticies[1];
-        this->verticies[2] = verticies[2];
-        this->position = position;
-        this->scale = scale;
-    }
-    Triangle::Triangle(Vector2 position, Vector2 scale){
-        verticies[0] = Vector2(-0.5,-0.5);
-        verticies[1] = Vector2(0,0.5);
-        verticies[2] = Vector2(0.5,-0.5);
-        this->position = position;
-        this->scale = scale;
+        scale = Vector2(1, 1);}
+
+        /// OpenGl setup
+        glGenBuffers(1, &buffer);
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), verticies, GL_STATIC_DRAW);
+        
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
     }
     void Triangle::Render(){
-        glBegin(GL_TRIANGLES);
-        glVertex2f(position.x+verticies[0].x*scale.x, position.y+verticies[0].y*scale.y);
-        glVertex2f(position.x+verticies[1].x*scale.x, position.y+verticies[1].y*scale.y);
-        glVertex2f(position.x+verticies[2].x*scale.x, position.y+verticies[2].y*scale.y);
-        glEnd();
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+    }
+
+
+
+    /// Mesh
+    template<typename T>
+    Mesh<T>::Mesh(){
+        /// OpenGl setup
+        glGenBuffers(1, &buffer);
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        glBufferData(GL_ARRAY_BUFFER, verticies.size()*sizeof(T), verticies, GL_STATIC_DRAW);
+    }
+    template<typename T>
+    void Mesh<T>::Render(){
+        glDrawArrays(GL_TRIANGLES, 0, 3);
     }
     
 }

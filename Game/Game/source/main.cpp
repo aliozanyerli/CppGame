@@ -2,14 +2,31 @@
 using namespace Graphics;
 
 Window window = Window(860, 640, "Mincertaf");
-Triangle tri = Triangle(Vector2(0,0), Vector2(1,1));
+Triangle triangle = Triangle();
 
+string vs = R"glsl(
+#version 330 core
+
+layout(location = 0) in vec4 position;
+
+void main(){
+   gl_Position = position;
+}
+)glsl";
+string fs = R"glsl(
+#version 330 core
+
+layout(location = 0) out vec4 color;
+
+void main(){
+   color = vec4(1.0, 0.0, 0.0, 1.0);
+}
+)glsl";
+Shader shader = Shader(vs, fs);
 
 
 void update(){
-    tri.position.x = sin(Time.time)/2;
-    tri.position.y = cos(Time.time)/2;
-    tri.Render();
+    triangle.Render();
 }
 
 

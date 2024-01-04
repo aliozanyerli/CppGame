@@ -1,16 +1,11 @@
 #pragma once
 
 //opengl libraries
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-//c++ libraries
-#include <iostream>
-#include <string>
-#include <vector>
+#include "pch.h"
 
 #include "MyMath.h"
 #include "MyTime.h"
+#include "Shader.h"
 
 using namespace std;
 
@@ -36,10 +31,20 @@ namespace Graphics{
 		Vector2 position, scale;
 		
 		Triangle();
-		Triangle(Vector2 position,Vector2 scale);
-		Triangle(Vector2 verticies[3],Vector2 position,Vector2 scale);
-
 		void Render();
+	private:
+		unsigned int buffer;
+	};
+
+	template<typename T>
+	class Mesh{
+		vector<T> verticies;
+		vector<int> indicies;
+
+		Mesh();
+		void Render();
+	private:
+		unsigned int buffer;
 	};
 
 }
