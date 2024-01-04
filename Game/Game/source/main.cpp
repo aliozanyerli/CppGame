@@ -2,11 +2,11 @@
 using namespace Graphics;
 
 Window window = Window(860, 640, "Demo Scene");
-Triangle triangle = Triangle();
+Quad quad;
 Shader shader = Shader("Engine/Shaders/Basic.shader");
 
 void update(){
-    triangle.Render();
+    quad.Render();
 }
 
 

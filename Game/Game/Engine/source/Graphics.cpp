@@ -47,11 +47,8 @@ namespace Graphics{
     /// Triangle
     Triangle::Triangle(){
         /// Setting up data
-        {verticies[0] = Vector2(-0.5,-0.5);
-        verticies[1] = Vector2(0,0.5);
-        verticies[2] = Vector2(0.5,-0.5);
         position = Vector2(0, 0);
-        scale = Vector2(1, 1);}
+        scale = Vector2(1, 1);
 
         /// OpenGl setup
         glGenBuffers(1, &buffer);
@@ -67,18 +64,27 @@ namespace Graphics{
 
 
 
-    /// Mesh
-    template<typename T>
-    Mesh<T>::Mesh(){
+    /// Quad
+    Quad::Quad(){
+        /// Setting up data
+        position = Vector2(0, 0);
+        scale = Vector2(1, 1);
+
         /// OpenGl setup
         glGenBuffers(1, &buffer);
         glBindBuffer(GL_ARRAY_BUFFER, buffer);
-        glBufferData(GL_ARRAY_BUFFER, verticies.size()*sizeof(T), verticies, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, 4*2*sizeof(float), verticies, GL_STATIC_DRAW);
+        
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
+
+        glGenBuffers(1, &ibo);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6*sizeof(unsigned int), indicies, GL_STATIC_DRAW);
     }
-    template<typename T>
-    void Mesh<T>::Render(){
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+    void Quad::Render(){
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
     }
-    
+
 }
 

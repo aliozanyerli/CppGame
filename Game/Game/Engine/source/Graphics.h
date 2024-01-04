@@ -27,7 +27,7 @@ namespace Graphics{
 
 	class Triangle{
 	public:
-		Vector2 verticies[3];
+		Vector2 verticies[3] = {Vector2(-0.5,-0.5), Vector2(0,0.5), Vector2(0.5,-0.5)};
 		Vector2 position, scale;
 		
 		Triangle();
@@ -36,15 +36,17 @@ namespace Graphics{
 		unsigned int buffer;
 	};
 
-	template<typename T>
-	class Mesh{
-		vector<T> verticies;
-		vector<int> indicies;
-
-		Mesh();
+	class Quad{
+	public:
+		Vector2 verticies[4] = {Vector2(-0.5,-0.5), Vector2(0.5,-0.5), Vector2(0.5,0.5), Vector2(-0.5,0.5)};
+		unsigned int indicies[6] = {0, 1, 2, 0, 2, 3};
+		Vector2 position, scale;
+		
+		Quad();
 		void Render();
 	private:
 		unsigned int buffer;
+		unsigned int ibo;
 	};
 
 }
