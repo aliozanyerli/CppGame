@@ -50,6 +50,9 @@
     <ClInclude Include="Engine\source\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\source\ErrorHandling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\Basic.shader" />

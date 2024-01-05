@@ -51,15 +51,15 @@ namespace Graphics{
         scale = Vector2(1, 1);
 
         /// OpenGl setup
-        glGenBuffers(1, &buffer);
-        glBindBuffer(GL_ARRAY_BUFFER, buffer);
-        glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), verticies, GL_STATIC_DRAW);
+        glCall(glGenBuffers(1, &buffer));
+        glCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
+        glCall(glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), verticies, GL_STATIC_DRAW));
         
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
+        glCall(glEnableVertexAttribArray(0));
+        glCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0));
     }
     void Triangle::Render(){
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glCall(glDrawArrays(GL_TRIANGLES, 0, 3));
     }
 
 
@@ -71,19 +71,19 @@ namespace Graphics{
         scale = Vector2(1, 1);
 
         /// OpenGl setup
-        glGenBuffers(1, &buffer);
-        glBindBuffer(GL_ARRAY_BUFFER, buffer);
-        glBufferData(GL_ARRAY_BUFFER, 4*2*sizeof(float), verticies, GL_STATIC_DRAW);
+        glCall(glGenBuffers(1, &buffer));
+        glCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
+        glCall(glBufferData(GL_ARRAY_BUFFER, 4*2*sizeof(float), verticies, GL_STATIC_DRAW));
         
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
+        glCall(glEnableVertexAttribArray(0));
+        glCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0));
 
-        glGenBuffers(1, &ibo);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6*sizeof(unsigned int), indicies, GL_STATIC_DRAW);
+        glCall(glGenBuffers(1, &ibo));
+        glCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
+        glCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6*sizeof(unsigned int), indicies, GL_STATIC_DRAW));
     }
     void Quad::Render(){
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        glCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
     }
 
 }

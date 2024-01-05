@@ -26,20 +26,20 @@ static ShaderSource ParseShader(const string & filePath){
 }
 
 static unsigned int CompileShader(unsigned int type, const string& source){
-	unsigned int id = glCreateShader(type);
+	glCall(unsigned int id = glCreateShader(type));
 	const char* src = source.c_str();
-	glShaderSource(id, 1, &src, nullptr);
-	glCompileShader(id);
+	glCall(glShaderSource(id, 1, &src, nullptr));
+	glCall(glCompileShader(id));
 
 	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+	glCall(glGetShaderiv(id, GL_COMPILE_STATUS, &result));
 	if(result == GL_FALSE){
 		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+		glCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
 		char* msg = (char*)alloca(length * sizeof(char));
-		glGetShaderInfoLog(id, length, &length, msg);
+		glCall(glGetShaderInfoLog(id, length, &length, msg));
 		cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "VERTEX" : "FRAGMENT") << " shader!\n    " << msg << '\n';
-		glDeleteShader(id);
+		glCall(glDeleteShader(id));
 		return 0;
 	}
 
@@ -47,17 +47,17 @@ static unsigned int CompileShader(unsigned int type, const string& source){
 }
 
 static unsigned int CreateShader(const string & vertexShader, const string & fragmentShader){
-	unsigned int program = glCreateProgram();
+	glCall(unsigned int program = glCreateProgram());
 	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
 	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
-	glLinkProgram(program);
-	glValidateProgram(program);
+	glCall(glAttachShader(program, vs));
+	glCall(glAttachShader(program, fs));
+	glCall(glLinkProgram(program));
+	glCall(glValidateProgram(program));
 
-	glDeleteShader(vs);
-	glDeleteShader(fs);
+	glCall(glDeleteShader(vs));
+	glCall(glDeleteShader(fs));
 
 	return program;
 }
@@ -74,9 +74,9 @@ Shader::Shader(const string& vertexShader, const string& fragmentShader){
 	Bind();
 }
 Shader::~Shader(){
-	glDeleteProgram(shader);
+	glCall(glDeleteProgram(shader));
 	cout << "Deleted shader!\n";
 }
 void Shader::Bind(){
-	glUseProgram(shader);
+	glCall(glUseProgram(shader));
 }

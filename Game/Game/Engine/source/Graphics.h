@@ -6,6 +6,7 @@
 #include "MyMath.h"
 #include "MyTime.h"
 #include "Shader.h"
+#include "ErrorHandling.h"
 
 using namespace std;
 

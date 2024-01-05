@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\source\Engine.h" />
+    <ClInclude Include="Engine\source\ErrorHandling.h" />
     <ClInclude Include="Engine\source\Graphics.h" />
     <ClInclude Include="Engine\source\MyMath.h" />
     <ClInclude Include="Engine\source\pch.h" />
