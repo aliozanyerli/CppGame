@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 //#include "ErrorHandling.h"
 using namespace std;

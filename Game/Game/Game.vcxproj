@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\source\Buffers\IndexBuffer.cpp" />
+    <ClCompile Include="Engine\source\Buffers\VertexArray.cpp" />
     <ClCompile Include="Engine\source\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Engine\source\Graphics.cpp" />
     <ClCompile Include="Engine\source\MyMath.cpp" />
@@ -150,7 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\source\Buffers\IndexBuffer.h" />
+    <ClInclude Include="Engine\source\Buffers\VertexArray.h" />
     <ClInclude Include="Engine\source\Buffers\VertexBuffer.h" />
+    <ClInclude Include="Engine\source\Buffers\VertexBufferLayout.h" />
     <ClInclude Include="Engine\source\Engine.h" />
     <ClInclude Include="Engine\source\ErrorHandling.h" />
     <ClInclude Include="Engine\source\Graphics.h" />

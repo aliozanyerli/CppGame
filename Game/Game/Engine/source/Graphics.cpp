@@ -13,9 +13,9 @@ namespace Graphics{
             return;
         }
 
-        /*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);*/
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         window = glfwCreateWindow(wx, wy, this->title, NULL, NULL);
         if (!window){
@@ -52,27 +52,6 @@ namespace Graphics{
     }
 
 
-    
-    /// Triangle
-    Triangle::Triangle(){
-        /// Setting up data
-        position = Vector2(0, 0);
-        scale = Vector2(1, 1);
-
-        /// OpenGl setup
-        glCall(glGenBuffers(1, &buffer));
-        glCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
-        glCall(glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), verticies, GL_STATIC_DRAW));
-        
-        glCall(glEnableVertexAttribArray(0));
-        glCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0));
-    }
-    void Triangle::Render(){
-        glCall(glDrawArrays(GL_TRIANGLES, 0, 3));
-    }
-
-
-
     /// Quad
     Quad::Quad(){
         /// Setting up data
@@ -80,19 +59,13 @@ namespace Graphics{
         scale = Vector2(1, 1);
 
         /// OpenGl setup
-        glCall(glGenVertexArrays(1,&vao));
-        glCall(glBindVertexArray(vao));
-        
-        vb.Bind();
-        
-        glCall(glEnableVertexAttribArray(0));
-        glCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0));
-
+        layout.Push<float>(2);
+        va.AddBuffer(vb, layout);
         ib.Bind();
     }
     void Quad::Render(){
         shader.Bind();
-        glCall(glBindVertexArray(vao));
+        va.Bind();
         glCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
     }
 

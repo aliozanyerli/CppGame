@@ -8,6 +8,7 @@
 #include "Shader.h"
 #include "Buffers/VertexBuffer.h"
 #include "Buffers/IndexBuffer.h"
+#include "Buffers/VertexArray.h"
 
 using namespace std;
 
@@ -27,16 +28,6 @@ namespace Graphics{
 		void Update(void(*func)());
 	};
 
-	class Triangle{
-	public:
-		Vector2 verticies[3] = {Vector2(-0.5,-0.5), Vector2(0,0.5), Vector2(0.5,-0.5)};
-		Vector2 position, scale;
-		
-		Triangle();
-		void Render();
-	private:
-		unsigned int buffer;
-	};
 
 	class Quad{
 	public:
@@ -50,8 +41,8 @@ namespace Graphics{
 	private:
 		VertexBuffer vb = VertexBuffer(verticies, 4*sizeof(Vector2));
 		IndexBuffer ib = IndexBuffer(indicies, 6);
-		unsigned int vao;
-		unsigned int ibo;
+		VertexArray va;
+		VertexBufferLayout layout;
 	};
 
 }

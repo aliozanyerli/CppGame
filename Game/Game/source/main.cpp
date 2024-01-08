@@ -6,7 +6,7 @@ Quad quad;
 
 void update(){
     quad.Render();
-    cout << Time.deltaTime << "ms, " << 1/Time.deltaTime << "fps\n";
+    cout << Time.deltaTime*1000 << "ms, " << 1/Time.deltaTime << "fps\n";
 }
 
 int main(){
