@@ -12,6 +12,11 @@ namespace Graphics{
             cout << "Init error!\n";
             return;
         }
+
+        /*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);*/
+
         window = glfwCreateWindow(wx, wy, this->title, NULL, NULL);
         if (!window){
             cout << "!window error\n";
@@ -37,6 +42,10 @@ namespace Graphics{
         Time.calculateDelta();
         Time.updateTime();
         glClear(GL_COLOR_BUFFER_BIT);
+        glCall(glBindVertexArray(0));
+        glCall(glUseProgram(0));
+        glCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+        glCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
         func();
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -71,18 +80,19 @@ namespace Graphics{
         scale = Vector2(1, 1);
 
         /// OpenGl setup
-        glCall(glGenBuffers(1, &buffer));
-        glCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
-        glCall(glBufferData(GL_ARRAY_BUFFER, 4*2*sizeof(float), verticies, GL_STATIC_DRAW));
+        glCall(glGenVertexArrays(1,&vao));
+        glCall(glBindVertexArray(vao));
+        
+        vb.Bind();
         
         glCall(glEnableVertexAttribArray(0));
         glCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0));
 
-        glCall(glGenBuffers(1, &ibo));
-        glCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
-        glCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6*sizeof(unsigned int), indicies, GL_STATIC_DRAW));
+        ib.Bind();
     }
     void Quad::Render(){
+        shader.Bind();
+        glCall(glBindVertexArray(vao));
         glCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
     }
 

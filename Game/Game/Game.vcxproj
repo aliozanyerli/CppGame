@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\source\Buffers\IndexBuffer.cpp" />
+    <ClCompile Include="Engine\source\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Engine\source\Graphics.cpp" />
     <ClCompile Include="Engine\source\MyMath.cpp" />
     <ClCompile Include="Engine\source\MyTime.cpp" />
@@ -147,6 +149,8 @@
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\source\Buffers\IndexBuffer.h" />
+    <ClInclude Include="Engine\source\Buffers\VertexBuffer.h" />
     <ClInclude Include="Engine\source\Engine.h" />
     <ClInclude Include="Engine\source\ErrorHandling.h" />
     <ClInclude Include="Engine\source\Graphics.h" />
@@ -155,7 +159,7 @@
     <ClInclude Include="Engine\source\Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\Shaders\Basic.shader" />
+    <None Include="Engine\Assets\Shaders\Basic.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

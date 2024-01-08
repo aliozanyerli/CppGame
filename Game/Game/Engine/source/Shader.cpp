@@ -63,6 +63,12 @@ static unsigned int CreateShader(const string & vertexShader, const string & fra
 }
 
 
+/*Shader::Shader(){
+	ShaderSource source = ParseShader("Engine/Assets/Shaders/Basic.shader");
+	//cout << "VERTEX:\n" << source.vertexSource << "\n\n\nFRAGMENT:\n" << source.fragmentSource << "\n\n\n";
+	shader = CreateShader(source.vertexSource, source.fragmentSource);
+	Bind();
+}*/
 Shader::Shader(const string& filePath){
 	ShaderSource source = ParseShader(filePath);
 	//cout << "VERTEX:\n" << source.vertexSource << "\n\n\nFRAGMENT:\n" << source.fragmentSource << "\n\n\n";

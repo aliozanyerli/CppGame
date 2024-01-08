@@ -6,7 +6,8 @@
 #include "MyMath.h"
 #include "MyTime.h"
 #include "Shader.h"
-#include "ErrorHandling.h"
+#include "Buffers/VertexBuffer.h"
+#include "Buffers/IndexBuffer.h"
 
 using namespace std;
 
@@ -42,11 +43,14 @@ namespace Graphics{
 		Vector2 verticies[4] = {Vector2(-0.5,-0.5), Vector2(0.5,-0.5), Vector2(0.5,0.5), Vector2(-0.5,0.5)};
 		unsigned int indicies[6] = {0, 1, 2, 0, 2, 3};
 		Vector2 position, scale;
+		Shader shader = Shader("Engine/Assets/Shaders/Basic.shader");
 		
 		Quad();
 		void Render();
 	private:
-		unsigned int buffer;
+		VertexBuffer vb = VertexBuffer(verticies, 4*sizeof(Vector2));
+		IndexBuffer ib = IndexBuffer(indicies, 6);
+		unsigned int vao;
 		unsigned int ibo;
 	};
 
