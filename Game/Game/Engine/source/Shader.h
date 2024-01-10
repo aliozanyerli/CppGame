@@ -1,27 +1,26 @@
 #pragma once
 #include "pch.h"
 //#include "ErrorHandling.h"
-using namespace std;
 
 
 struct ShaderSource{
-	string vertexSource, fragmentSource;
+	std::string vertexSource, fragmentSource;
 };
 
 
-static ShaderSource ParseShader(const string& filePath);
+static ShaderSource ParseShader(const std::string& filePath);
 
-static unsigned int CompileShader(unsigned int type, const string& source);
+static unsigned int CompileShader(unsigned int type, const std::string& source);
 
-static unsigned int CreateShader(const string& vertexShader, const string& fragmentShader);
+static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
 
 class Shader{
 public:
 	unsigned int shader=0;
 
-	Shader(const string& filePath);
-	Shader(const string& vertexShader, const string& fragmentShader);
+	Shader(const std::string& filePath);
+	Shader(const std::string& vertexShader, const std::string& fragmentShader);
 	~Shader();
 	void Bind();
 };

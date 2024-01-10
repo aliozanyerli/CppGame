@@ -1,2 +1,7 @@
-﻿  main.cpp
-  Game.vcxproj -> C:\dev\CppGame\Game\Debug\Game.exe
+﻿  Graphics.cpp
+  MyTime.cpp
+  MyTime.h
+  Shader.cpp
+  main.cpp
+C:\dev\CppGame\Game\Game\source\main.cpp(9,5): error C2065: 'cout': undeclared identifier
+  Generating Code...

@@ -10,7 +10,6 @@
 #include "Buffers/IndexBuffer.h"
 #include "Buffers/VertexArray.h"
 
-using namespace std;
 
 
 

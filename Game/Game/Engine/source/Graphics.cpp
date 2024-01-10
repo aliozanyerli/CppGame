@@ -9,7 +9,7 @@ namespace Graphics{
 		this->title = (char*)title;
 
         if(!glfwInit()){
-            cout << "Init error!\n";
+            std::cout << "Init error!\n";
             return;
         }
 
@@ -19,21 +19,21 @@ namespace Graphics{
 
         window = glfwCreateWindow(wx, wy, this->title, NULL, NULL);
         if (!window){
-            cout << "!window error\n";
+            std::cout << "!window error\n";
             glfwTerminate();
             return;
         }
         glfwMakeContextCurrent(window);
         if(glewInit() != GLEW_OK){
-            cout << "glewInit() is not ok :(\n";
+            std::cout << "glewInit() is not ok :(\n";
         }
-        cout << glGetString(GL_VERSION) << endl;
+        std::cout << glGetString(GL_VERSION) << '\n';
 
-		cout << "Created a window with title: " << '"' << this->title << '"' << " !\n";
+		std::cout << "Created a window with title: " << '"' << this->title << '"' << " !\n";
 	}
 	Window::~Window(){
         glfwTerminate();
-		cout << "Successfully destroyed " << '"' << title << '"' << " !\n";
+		std::cout << "Successfully destroyed " << '"' << title << '"' << " !\n";
 	}
     bool Window::ShouldClose(){
         return glfwWindowShouldClose(window);

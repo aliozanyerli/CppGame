@@ -1,4 +1,5 @@
 #include <Engine.h>
+using namespace std;
 using namespace Graphics;
 
 Window window = Window(860, 640, "Demo Scene");
