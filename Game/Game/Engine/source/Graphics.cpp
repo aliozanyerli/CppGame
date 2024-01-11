@@ -1,6 +1,7 @@
 #include "Graphics.h"
 
 
+
 namespace Graphics{
 	/// Window
 	Window::Window(int sizeX, int sizeY, const char title[]){
@@ -42,10 +43,6 @@ namespace Graphics{
         Time.calculateDelta();
         Time.updateTime();
         glClear(GL_COLOR_BUFFER_BIT);
-        glCall(glBindVertexArray(0));
-        glCall(glUseProgram(0));
-        glCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
-        glCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
         func();
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -55,8 +52,8 @@ namespace Graphics{
     /// Quad
     Quad::Quad(){
         /// Setting up data
-        position = Vector2(0, 0);
-        scale = Vector2(1, 1);
+        position = {0,0};
+        scale = {1,1};
 
         /// OpenGl setup
         layout.Push<float>(2);

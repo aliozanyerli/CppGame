@@ -1,7 +1,15 @@
-﻿  Graphics.cpp
+﻿  IndexBuffer.cpp
+  VertexArray.cpp
+C:\dev\CppGame\Game\Game\Engine\source\Buffers\VertexArray.cpp(17,19): warning C4018: '<': signed/unsigned mismatch
+  VertexBuffer.cpp
+  Graphics.cpp
   MyTime.cpp
   MyTime.h
   Shader.cpp
   main.cpp
-C:\dev\CppGame\Game\Game\source\main.cpp(9,5): error C2065: 'cout': undeclared identifier
   Generating Code...
+Debug\MyTime.obj : warning LNK4042: object specified more than once; extras ignored
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
+  Game.vcxproj -> C:\dev\CppGame\Game\Debug\Game.exe

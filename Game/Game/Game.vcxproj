@@ -143,7 +143,6 @@
     <ClCompile Include="Engine\source\Buffers\VertexArray.cpp" />
     <ClCompile Include="Engine\source\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Engine\source\Graphics.cpp" />
-    <ClCompile Include="Engine\source\MyMath.cpp" />
     <ClCompile Include="Engine\source\MyTime.cpp" />
     <ClCompile Include="Engine\source\MyTime.h" />
     <ClCompile Include="Engine\source\Shader.cpp" />

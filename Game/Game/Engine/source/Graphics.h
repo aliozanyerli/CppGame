@@ -30,7 +30,7 @@ namespace Graphics{
 
 	class Quad{
 	public:
-		Vector2 verticies[4] = {Vector2(-0.5,-0.5), Vector2(0.5,-0.5), Vector2(0.5,0.5), Vector2(-0.5,0.5)};
+		Vector2 verticies[4] = {{-0.5,-0.5},{0.5,-0.5},{0.5,0.5},{-0.5,0.5}};
 		unsigned int indicies[6] = {0, 1, 2, 0, 2, 3};
 		Vector2 position, scale;
 		Shader shader = Shader("Engine/Assets/Shaders/Basic.shader");
